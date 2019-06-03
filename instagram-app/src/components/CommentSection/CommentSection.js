@@ -9,8 +9,7 @@ export default function CommentSection({
   postComments,
   commentInput,
   commentHandler,
-  commentSubmit,
-  id
+  commentSubmit
 }) {
   const comments = postComments.map(comment => (
     <Comment key={comment.id} {...comment} />
@@ -23,7 +22,7 @@ export default function CommentSection({
       {comments}
 
       <span className="time">{moment(new Date(newDate)).format("MMM D")}</span>
-      <form onSubmit={e => commentSubmit(id, e)}>
+      <form onSubmit={commentSubmit}>
         <input
           type="text"
           value={commentInput}
@@ -40,6 +39,5 @@ CommentSection.propTypes = {
   postComments: Props.arrayOf(Props.object).isRequired,
   commentInput: Props.string.isRequired,
   commentHandler: Props.func.isRequired,
-  commentSubmit: Props.func.isRequired,
-  id: Props.string.isRequired
+  commentSubmit: Props.func.isRequired
 };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Props from "prop-types";
+import { v4 } from "uuid";
 import CommentSection from "../CommentSection/CommentSection";
 import "./PostConatainer.css";
 
@@ -10,11 +11,26 @@ export default function PostContainer({
   imageUrl,
   likes,
   timestamp,
-  comments,
-  defaultComment,
-  inputHandler,
-  addInput
+  comments
 }) {
+  const [comment, updateComment] = useState("");
+
+  const commentInputHandler = event => {
+    updateComment(event.target.value);
+  };
+
+  const commentHandler = e => {
+    e.preventDefault();
+    const newComment = {
+      id: v4(),
+      username: "user",
+      text: comment
+    };
+
+    comments.push(newComment);
+    updateComment("");
+  };
+
   return (
     <div className="post-container">
       <div className="post-header">
@@ -34,9 +50,9 @@ export default function PostContainer({
       <CommentSection
         time={timestamp}
         postComments={comments}
-        commentInput={defaultComment}
-        commentHandler={inputHandler}
-        commentSubmit={addInput}
+        commentInput={comment}
+        commentHandler={commentInputHandler}
+        commentSubmit={commentHandler}
         id={id}
       />
     </div>
@@ -50,8 +66,5 @@ PostContainer.propTypes = {
   imageUrl: Props.string.isRequired,
   likes: Props.number.isRequired,
   timestamp: Props.string.isRequired,
-  comments: Props.arrayOf(Props.object).isRequired,
-  defaultComment: Props.string.isRequired,
-  inputHandler: Props.func.isRequired,
-  addInput: Props.func.isRequired
+  comments: Props.arrayOf(Props.object).isRequired
 };
