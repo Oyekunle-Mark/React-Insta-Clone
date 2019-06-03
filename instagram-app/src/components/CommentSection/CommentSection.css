@@ -1,0 +1,16 @@
+.comment-section input {
+  display: block;
+  width: 96%;
+  height: 60px;
+  margin: auto;
+  border-top: 1px solid rgb(211, 209, 209);
+  border-left: 0;
+  border-bottom: 0;
+  border-right: 0;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.comment-section .time {
+  padding-left: 10px;
+}

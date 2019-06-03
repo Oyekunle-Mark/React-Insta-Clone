@@ -1,6 +1,7 @@
 import React from "react";
 import Props from "prop-types";
 import CommentSection from "../CommentSection/CommentSection";
+import "./PostConatainer.css";
 
 export default function PostContainer({
   username,
@@ -12,13 +13,19 @@ export default function PostContainer({
 }) {
   return (
     <div className="post-container">
-      <h4>
+      <div className="post-header">
         <img src={thumbnailUrl} alt="user-icon" />
         <span>{username}</span>
-      </h4>
+      </div>
       <img src={imageUrl} alt="post-imgae" />
-      <div className="icons" />
-      <p>{likes} likes</p>
+      <div className="icons">
+        <img src="https://img.icons8.com/ios/50/000000/hearts.png" alt="like" />
+        <img
+          src="https://img.icons8.com/ios/50/000000/speech-bubble.png"
+          alt="comment"
+        />
+      </div>
+      <p className="likes">{likes} likes</p>
 
       <CommentSection time={timestamp} postComments={comments} />
     </div>

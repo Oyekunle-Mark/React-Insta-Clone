@@ -4,7 +4,7 @@ import Props from "prop-types";
 export default function Comment({ username, text }) {
   return (
     <p className="comment">
-      <span>{username}</span> {text}
+      <span className="likes">{username}</span> {text}
     </p>
   );
 }

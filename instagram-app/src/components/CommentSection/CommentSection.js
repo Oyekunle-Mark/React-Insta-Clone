@@ -1,6 +1,7 @@
 import React from "react";
 import Props from "prop-types";
 import Comment from "../Comment/Comment";
+import "./CommentSection.css";
 
 export default function CommentSection({ time, postComments }) {
   const comments = postComments.map(comment => (
@@ -10,8 +11,8 @@ export default function CommentSection({ time, postComments }) {
     <div className="comment-section">
       {comments}
 
-      <p>{time}</p>
-      <textarea />
+      <span className="time">{time}</span>
+      <input type="text" placeholder="Add a comment..." />
     </div>
   );
 }
