@@ -1,4 +1,5 @@
 import React from "react";
+import Props from "prop-types";
 import Comment from "../Comment/Comment";
 
 export default function CommentSection({ time, postComments }) {
@@ -14,3 +15,8 @@ export default function CommentSection({ time, postComments }) {
     </div>
   );
 }
+
+CommentSection.propTypes = {
+  time: Props.string.isRequired,
+  postComments: Props.arrayOf(Props.object).isRequired
+};
