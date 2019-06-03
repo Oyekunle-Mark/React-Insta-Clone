@@ -4,12 +4,16 @@ import CommentSection from "../CommentSection/CommentSection";
 import "./PostConatainer.css";
 
 export default function PostContainer({
+  id,
   username,
   thumbnailUrl,
   imageUrl,
   likes,
   timestamp,
-  comments
+  comments,
+  defaultComment,
+  inputHandler,
+  addInput
 }) {
   return (
     <div className="post-container">
@@ -27,16 +31,27 @@ export default function PostContainer({
       </div>
       <p className="likes">{likes} likes</p>
 
-      <CommentSection time={timestamp} postComments={comments} />
+      <CommentSection
+        time={timestamp}
+        postComments={comments}
+        commentInput={defaultComment}
+        commentHandler={inputHandler}
+        commentSubmit={addInput}
+        id={id}
+      />
     </div>
   );
 }
 
 PostContainer.propTypes = {
+  id: Props.string.isRequired,
   username: Props.string.isRequired,
   thumbnailUrl: Props.string.isRequired,
   imageUrl: Props.string.isRequired,
   likes: Props.number.isRequired,
   timestamp: Props.string.isRequired,
-  comments: Props.arrayOf(Props.object).isRequired
+  comments: Props.arrayOf(Props.object).isRequired,
+  defaultComment: Props.string.isRequired,
+  inputHandler: Props.func.isRequired,
+  addInput: Props.func.isRequired
 };

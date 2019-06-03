@@ -3,7 +3,14 @@ import Props from "prop-types";
 import Comment from "../Comment/Comment";
 import "./CommentSection.css";
 
-export default function CommentSection({ time, postComments }) {
+export default function CommentSection({
+  time,
+  postComments,
+  commentInput,
+  commentHandler,
+  commentSubmit,
+  id
+}) {
   const comments = postComments.map(comment => (
     <Comment key={comment.id} {...comment} />
   ));
@@ -12,12 +19,23 @@ export default function CommentSection({ time, postComments }) {
       {comments}
 
       <span className="time">{time}</span>
-      <input type="text" placeholder="Add a comment..." />
+      <form onSubmit={e => commentSubmit(id, e)}>
+        <input
+          type="text"
+          value={commentInput}
+          placeholder="Add a comment..."
+          onChange={commentHandler}
+        />
+      </form>
     </div>
   );
 }
 
 CommentSection.propTypes = {
   time: Props.string.isRequired,
-  postComments: Props.arrayOf(Props.object).isRequired
+  postComments: Props.arrayOf(Props.object).isRequired,
+  commentInput: Props.string.isRequired,
+  commentHandler: Props.func.isRequired,
+  commentSubmit: Props.func.isRequired,
+  id: Props.string.isRequired
 };
