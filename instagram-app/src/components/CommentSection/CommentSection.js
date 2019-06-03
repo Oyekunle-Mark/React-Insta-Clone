@@ -1,5 +1,6 @@
 import React from "react";
 import Props from "prop-types";
+import moment from "moment";
 import Comment from "../Comment/Comment";
 import "./CommentSection.css";
 
@@ -14,11 +15,14 @@ export default function CommentSection({
   const comments = postComments.map(comment => (
     <Comment key={comment.id} {...comment} />
   ));
+
+  const newDate = time.replace(/th/, "");
+
   return (
     <div className="comment-section">
       {comments}
 
-      <span className="time">{time}</span>
+      <span className="time">{moment(new Date(newDate)).format("MMM D")}</span>
       <form onSubmit={e => commentSubmit(id, e)}>
         <input
           type="text"
