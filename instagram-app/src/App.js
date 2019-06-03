@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 } from 'uuid';
 import data from "./dummy-data";
 import SeachBar from "./components/SearchBar/SearchBar";
 import PostContainer from "./components/PostContainer/PostContainer";
@@ -11,7 +12,7 @@ function App() {
   const commentHandler = (id, e) => {
     e.preventDefault();
     const newComment = {
-      id: Date.now(),
+      id: v4(),
       username: "user",
       text: comment
     };
