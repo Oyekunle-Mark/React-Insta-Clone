@@ -14,14 +14,17 @@ export default function CommentSection({ time, postComments }) {
 
   const addNewComment = e => {
     e.preventDefault();
-    const newComment = {
-      id: v4(),
-      username: "codeMage",
-      text: comment
-    };
 
-    postComments.push(newComment);
-    updateComment("");
+    if (comment.trim()) {
+      const newComment = {
+        id: v4(),
+        username: "codeMage",
+        text: comment
+      };
+
+      postComments.push(newComment);
+      updateComment("");
+    }
   };
 
   const comments = postComments.map(singleComment => (

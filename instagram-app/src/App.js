@@ -15,8 +15,20 @@ class App extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener("beforeunload", () => {
+      this.updateLocalStorage();
+    });
+
+    let initialPosts;
+
+    try {
+      initialPosts = JSON.parse(localStorage.instagramClone);
+    } catch (e) {
+      initialPosts = data;
+    }
+
     this.setState({
-      posts: data
+      posts: initialPosts
     });
   }
 
@@ -41,13 +53,19 @@ class App extends Component {
   filterPosts = e => {
     e.preventDefault();
 
-    this.setState(prevState => ({
-      posts: prevState.posts.filter(post =>
-        post.username
-          .toLowerCase()
-          .includes(prevState.searchInput.toLowerCase())
-      )
-    }));
+    if (this.state.searchInput.trim()) {
+      this.setState(prevState => ({
+        posts: prevState.posts.filter(post =>
+          post.username
+            .toLowerCase()
+            .includes(prevState.searchInput.toLowerCase())
+        )
+      }));
+    }
+  };
+
+  updateLocalStorage = () => {
+    window.localStorage.instagramClone = JSON.stringify(this.state.posts);
   };
 
   render() {
