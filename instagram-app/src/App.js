@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Fuse from "fuse.js";
 import data from "./dummy-data";
 import SeachBar from "./components/SearchBar/SearchBar";
 import PostContainer from "./components/PostContainer/PostContainer";
@@ -28,7 +29,7 @@ class App extends Component {
     }
 
     this.setState({
-      posts: initialPosts
+      posts: data
     });
   }
 
@@ -52,20 +53,23 @@ class App extends Component {
 
   filterPosts = e => {
     e.preventDefault();
+    const { searchInput } = this.state;
+    const options = {
+      keys: ["username"]
+    };
 
     if (this.state.searchInput.trim()) {
       this.setState(prevState => ({
-        posts: prevState.posts.filter(post =>
-          post.username
-            .toLowerCase()
-            .includes(prevState.searchInput.toLowerCase())
-        )
+        posts: prevState.posts.filter(post => {
+          const fuse = new Fuse([post], options);
+          return !!fuse.search(searchInput).length;
+        })
       }));
     }
   };
 
   updateLocalStorage = () => {
-    window.localStorage.instagramClone = JSON.stringify(this.state.posts);
+    localStorage.instagramClone = JSON.stringify(this.state.posts);
   };
 
   render() {
