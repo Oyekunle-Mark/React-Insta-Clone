@@ -33,7 +33,7 @@ export default function CommentSection({
     </div>
   );
 }
-
+ 
 CommentSection.propTypes = {
   time: Props.string.isRequired,
   postComments: Props.arrayOf(Props.object).isRequired,
