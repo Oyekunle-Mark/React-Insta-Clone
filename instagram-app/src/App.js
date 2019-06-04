@@ -19,10 +19,22 @@ class App extends Component {
     });
   }
 
+  likeComment = id => {
+    const newPosts = [...this.state.posts];
+
+    newPosts.forEach(post => {
+      if (post.id === id) post.likes += 1;
+    });
+
+    this.setState({
+      posts: newPosts
+    });
+  };
+
   render() {
     const { posts } = this.state;
     const postContainers = posts.map(post => (
-      <PostContainer key={post.id} {...post} />
+      <PostContainer key={post.id} {...post} likeHandler={this.likeComment} />
     ));
 
     return (

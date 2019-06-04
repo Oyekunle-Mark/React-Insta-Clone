@@ -10,7 +10,8 @@ export default function PostContainer({
   imageUrl,
   likes,
   timestamp,
-  comments
+  comments,
+  likeHandler
 }) {
   return (
     <div className="post-container">
@@ -20,7 +21,11 @@ export default function PostContainer({
       </div>
       <img src={imageUrl} alt="post-imgae" />
       <div className="icons">
-        <img src="https://img.icons8.com/ios/50/000000/hearts.png" alt="like" />
+        <img
+          src="https://img.icons8.com/ios/50/000000/hearts.png"
+          alt="like"
+          onClick={() => likeHandler(id)}
+        />
         <img
           src="https://img.icons8.com/ios/50/000000/speech-bubble.png"
           alt="comment"
@@ -40,5 +45,6 @@ PostContainer.propTypes = {
   imageUrl: Props.string.isRequired,
   likes: Props.number.isRequired,
   timestamp: Props.string.isRequired,
-  comments: Props.arrayOf(Props.object).isRequired
+  comments: Props.arrayOf(Props.object).isRequired,
+  likeHandler: Props.func.isRequired
 };
