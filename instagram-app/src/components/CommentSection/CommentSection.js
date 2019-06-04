@@ -7,6 +7,7 @@ import "./CommentSection.css";
 
 export default function CommentSection({ time, postComments }) {
   const [comment, updateComment] = useState("");
+  const [commentList, updateCommentList] = useState(postComments);
 
   const commentInputHandler = event => {
     updateComment(event.target.value);
@@ -22,13 +23,24 @@ export default function CommentSection({ time, postComments }) {
         text: comment
       };
 
+      updateCommentList(commentList.concat(newComment));
       postComments.push(newComment);
       updateComment("");
     }
   };
 
-  const comments = postComments.map(singleComment => (
-    <Comment key={singleComment.id} {...singleComment} />
+  const deleteComment = (id, i) => {
+    updateCommentList(commentList.filter(comm => comm.id !== id));
+    postComments.pop(i);
+  };
+
+  const comments = commentList.map((singleComment, i) => (
+    <Comment
+      key={singleComment.id}
+      {...singleComment}
+      removeComment={deleteComment}
+      position={i}
+    />
   ));
 
   const newDate = time.replace(/th/, "");

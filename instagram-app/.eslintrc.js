@@ -33,6 +33,8 @@ module.exports = {
     "react/destructuring-assignment": 0,
     "no-param-reassign": 0,
     "implicit-arrow-linebreak": 0,
-    "function-paren-newline": 0
+    "function-paren-newline": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "object-curly-newline": 0
   }
 };
