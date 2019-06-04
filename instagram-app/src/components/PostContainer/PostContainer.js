@@ -15,11 +15,14 @@ export default function PostContainer({
 }) {
   return (
     <div className="post-container">
+
       <div className="post-header">
         <img src={thumbnailUrl} alt="user-icon" />
         <span>{username}</span>
       </div>
+
       <img src={imageUrl} alt="post-imgae" />
+
       <div className="icons">
         <img
           src="https://img.icons8.com/ios/50/000000/hearts.png"
@@ -31,6 +34,7 @@ export default function PostContainer({
           alt="comment"
         />
       </div>
+
       <p className="likes">{likes} likes</p>
 
       <CommentSection time={timestamp} postComments={comments} id={id} />

@@ -35,6 +35,7 @@ export default function CommentSection({ time, postComments }) {
       {comments}
 
       <span className="time">{moment(new Date(newDate)).format("MMM D")}</span>
+
       <form onSubmit={addNewComment}>
         <input
           type="text"

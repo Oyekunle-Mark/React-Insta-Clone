@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      posts: [],
+      searchInput: ""
     };
   }
 
@@ -31,15 +32,38 @@ class App extends Component {
     });
   };
 
+  searchInputChange = e => {
+    this.setState({
+      searchInput: e.target.value
+    });
+  };
+
+  filterPosts = e => {
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      posts: prevState.posts.filter(post =>
+        post.username
+          .toLowerCase()
+          .includes(prevState.searchInput.toLowerCase())
+      )
+    }));
+  };
+
   render() {
-    const { posts } = this.state;
+    const { posts, searchInput } = this.state;
     const postContainers = posts.map(post => (
       <PostContainer key={post.id} {...post} likeHandler={this.likeComment} />
     ));
 
     return (
       <div className="App">
-        <SeachBar />
+        <SeachBar
+          searchValue={searchInput}
+          inputChange={this.searchInputChange}
+          searchSubmit={this.filterPosts}
+        />
+
         {postContainers}
       </div>
     );
