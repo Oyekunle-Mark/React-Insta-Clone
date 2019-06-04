@@ -35,6 +35,10 @@ module.exports = {
     "implicit-arrow-linebreak": 0,
     "function-paren-newline": 0,
     "jsx-a11y/no-static-element-interactions": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "nonblock-statement-body-position": 0,
+    "consistent-return": 0,
+    "no-extra-boolean-cast": 0,
+    "operator-linebreak": 0
   }
 };

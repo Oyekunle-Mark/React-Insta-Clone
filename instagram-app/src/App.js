@@ -29,7 +29,7 @@ class App extends Component {
     }
 
     this.setState({
-      posts: data
+      posts: initialPosts
     });
   }
 
@@ -51,39 +51,38 @@ class App extends Component {
     });
   };
 
-  filterPosts = e => {
-    e.preventDefault();
-    const { searchInput } = this.state;
-    const options = {
-      keys: ["username"]
-    };
-
-    if (this.state.searchInput.trim()) {
-      this.setState(prevState => ({
-        posts: prevState.posts.filter(post => {
-          const fuse = new Fuse([post], options);
-          return !!fuse.search(searchInput).length;
-        })
-      }));
-    }
-  };
-
   updateLocalStorage = () => {
     localStorage.instagramClone = JSON.stringify(this.state.posts);
   };
 
   render() {
     const { posts, searchInput } = this.state;
-    const postContainers = posts.map(post => (
-      <PostContainer key={post.id} {...post} likeHandler={this.likeComment} />
-    ));
+
+    const options = {
+      keys: ["username"]
+    };
+
+    // eslint-disable-next-line
+    const postContainers = posts.map(post => {
+      if (
+        !!new Fuse([post], options).search(searchInput).length ||
+        searchInput.trim() === ""
+      ) {
+        return (
+          <PostContainer
+            key={post.id}
+            {...post}
+            likeHandler={this.likeComment}
+          />
+        );
+      }
+    });
 
     return (
       <div className="App">
         <SeachBar
           searchValue={searchInput}
           inputChange={this.searchInputChange}
-          searchSubmit={this.filterPosts}
         />
 
         {postContainers}

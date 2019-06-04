@@ -2,11 +2,10 @@ import React from "react";
 import Props from "prop-types";
 import "./SearchBar.css";
 
-export default function SearchBar({ searchValue, inputChange, searchSubmit }) {
+export default function SearchBar({ searchValue, inputChange }) {
   return (
     <header>
       <div className="header-container">
-
         <div className="logo">
           <img
             src="https://img.icons8.com/ios/50/000000/instagram-new.png"
@@ -15,14 +14,12 @@ export default function SearchBar({ searchValue, inputChange, searchSubmit }) {
           <h1>Instagram</h1>
         </div>
 
-        <form onSubmit={searchSubmit}>
-          <input
-            type="text"
-            placeholder="&#128269; Search"
-            value={searchValue}
-            onChange={inputChange}
-          />
-        </form>
+        <input
+          type="text"
+          placeholder="&#128269; Search"
+          value={searchValue}
+          onChange={inputChange}
+        />
 
         <div className="user-icons">
           <img
@@ -38,7 +35,6 @@ export default function SearchBar({ searchValue, inputChange, searchSubmit }) {
             alt="user"
           />
         </div>
-
       </div>
     </header>
   );
@@ -46,6 +42,5 @@ export default function SearchBar({ searchValue, inputChange, searchSubmit }) {
 
 SearchBar.propTypes = {
   searchValue: Props.string.isRequired,
-  inputChange: Props.func.isRequired,
-  searchSubmit: Props.func.isRequired
+  inputChange: Props.func.isRequired
 };
