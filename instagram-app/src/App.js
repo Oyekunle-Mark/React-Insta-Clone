@@ -1,20 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import data from "./dummy-data";
 import SeachBar from "./components/SearchBar/SearchBar";
 import PostContainer from "./components/PostContainer/PostContainer";
 import "./App.css";
 
-function App() {
-  const postContainers = data.map(post => (
-    <PostContainer key={post.id} {...post} />
-  ));
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="App">
-      <SeachBar />
-      {postContainers}
-    </div>
-  );
+    this.state = {
+      posts: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      posts: data
+    });
+  }
+
+  render() {
+    const { posts } = this.state;
+    const postContainers = posts.map(post => (
+      <PostContainer key={post.id} {...post} />
+    ));
+
+    return (
+      <div className="App">
+        <SeachBar />
+        {postContainers}
+      </div>
+    );
+  }
 }
 
 export default App;
