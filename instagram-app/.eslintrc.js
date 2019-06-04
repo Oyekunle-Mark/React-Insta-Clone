@@ -23,6 +23,8 @@ module.exports = {
     "react/jsx-one-expression-per-line": 0,
     "arrow-parens": 0,
     "array-callback-return": 0,
-    "react/button-has-type": 0
+    "react/button-has-type": 0,
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0
   }
 };
