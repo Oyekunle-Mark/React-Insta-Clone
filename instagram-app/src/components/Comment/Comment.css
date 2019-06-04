@@ -1,0 +1,9 @@
+.delete-icon {
+  float: right;
+  margin-right: 10px;
+  color: rgb(211, 209, 209);
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+}

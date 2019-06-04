@@ -5,6 +5,7 @@
   border: 1px solid rgb(211, 209, 209);
   margin-bottom: 60px;
   border-radius: 3px;
+  background: white;
 }
 
 .post-container .post-header {
@@ -35,6 +36,14 @@
   width: 26px;
   height: 26px;
   margin: 5px;
+}
+
+.post-container .icons img:hover {
+  cursor: pointer;
+}
+
+.post-container .icons img:active {
+  transform: scale(1.2);
 }
 
 .post-container p {

@@ -4,7 +4,9 @@ header {
   border-bottom: 1px solid rgb(211, 209, 209);
   margin-bottom: 60px;
   width: 100%;
+  background: white;
 }
+
 header .header-container {
   width: 1000px;
   display: flex;
@@ -36,13 +38,21 @@ header .header-container .logo h1 {
 
 header .header-container input {
   text-align: center;
-  width: 215px;
-  height: 28px;
+  width: 205px;
+  height: 18px;
   border: 1px solid rgb(211, 209, 209);
   font-size: 12px;
   border-radius: 3px;
   color: rgb(211, 209, 209);
-  background: rgb(243, 243, 243);
+  background: rgb(250, 250, 250);
+  padding: 5px;
+}
+
+header .header-container input:focus {
+  outline: none;
+  border: 2px solid rgb(179, 177, 177);
+  color: rgb(49, 47, 47);
+  text-align: left;
 }
 
 header .header-container .user-icons {

@@ -1,5 +1,6 @@
 import React from "react";
 import Props from "prop-types";
+import './Comment.css';
 
 export default function Comment({
   id,
