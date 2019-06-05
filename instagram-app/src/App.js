@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Fuse from "fuse.js";
 import data from "./dummy-data";
-import SeachBar from "./components/SearchBar/SearchBar";
-import PostContainer from "./components/PostContainer/PostContainer";
+import PostsPage from "./components/PostContainer/PostsPage";
 import "./App.css";
 
 class App extends Component {
@@ -58,34 +56,14 @@ class App extends Component {
   render() {
     const { posts, searchInput } = this.state;
 
-    const options = {
-      keys: ["username"]
-    };
-
-    // eslint-disable-next-line
-    const postContainers = posts.map(post => {
-      if (
-        !!new Fuse([post], options).search(searchInput).length ||
-        searchInput.trim() === ""
-      ) {
-        return (
-          <PostContainer
-            key={post.id}
-            {...post}
-            likeHandler={this.likeComment}
-          />
-        );
-      }
-    });
-
     return (
       <div className="App">
-        <SeachBar
-          searchValue={searchInput}
-          inputChange={this.searchInputChange}
+        <PostsPage
+          posts={posts}
+          searchInput={searchInput}
+          likeComment={this.likeComment}
+          searchInputChange={this.searchInputChange}
         />
-
-        {postContainers}
       </div>
     );
   }
