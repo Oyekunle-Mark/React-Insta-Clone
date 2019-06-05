@@ -19,7 +19,7 @@ export default function CommentSection({ time, postComments }) {
     if (comment.trim()) {
       const newComment = {
         id: v4(),
-        username: "codeMage",
+        username: localStorage.instagramCloneUsername,
         text: comment
       };
 
