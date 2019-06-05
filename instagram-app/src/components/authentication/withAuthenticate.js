@@ -1,9 +1,34 @@
 import React, { Component } from "react";
 
-export default function withAuthenticate(PassedComponent) {
-  return class extends Component {
+const withAuthenticate = PostsPage => LoginPage =>
+  class extends Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        loggedIn: false
+      };
+    }
+
+    componentDidMount() {
+      if (localStorage.instagramCloneUsername) {
+        this.setState({
+          loggedIn: true
+        });
+
+        return;
+      }
+
+      this.setState({
+        loggedIn: false
+      });
+    }
+
     render() {
-      return <PassedComponent {...this.props} />;
+      const { loggedIn } = this.state;
+
+      return loggedIn ? <PostsPage {...this.props} /> : <LoginPage />;
     }
   };
-}
+
+export default withAuthenticate;

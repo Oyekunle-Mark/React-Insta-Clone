@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import data from "./dummy-data";
 import PostsPage from "./components/PostContainer/PostsPage";
+import LoginPage from "./components/LoginPage/LoginPage";
 import withAuthenticate from "./components/authentication/withAuthenticate";
 import "./App.css";
 
@@ -56,7 +57,9 @@ class App extends Component {
 
   render() {
     const { posts, searchInput } = this.state;
-    const ComponentFromWithAuthenticate = withAuthenticate(PostsPage);
+    const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(
+      LoginPage
+    );
 
     return (
       <div className="App">
