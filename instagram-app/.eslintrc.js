@@ -39,6 +39,7 @@ module.exports = {
     "nonblock-statement-body-position": 0,
     "consistent-return": 0,
     "no-extra-boolean-cast": 0,
-    "operator-linebreak": 0
+    "operator-linebreak": 0,
+    "react/prefer-stateless-function": 0
   }
 };
