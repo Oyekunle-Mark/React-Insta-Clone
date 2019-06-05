@@ -1,0 +1,66 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 360px;
+  background: white;
+  border: 1px solid rgb(211, 209, 209);
+  border-radius: 3px;
+  margin: 10%;
+  margin-bottom: 22%;
+}
+
+.login-page h2 {
+  font-size: 35px;
+  font-family: "Satisfy", cursive;
+  margin-bottom: 20px;
+}
+
+.login-page hr {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.login-page input[type="text"] {
+  width: 78%;
+  height: 35px;
+  border: 1px solid rgb(211, 209, 209);
+  border-radius: 3px;
+  background: rgb(250, 249, 249);
+  font-size: 12px;
+  padding: 0 5px;
+  margin: 10px 0;
+}
+
+.login-page input[type="text"]:focus {
+  outline: none;
+  border: 2px solid rgb(179, 177, 177);
+  color: rgb(49, 47, 47);
+}
+
+.login-page button {
+  width: 81.5%;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  border-color: rgb(56, 151, 240);
+  background: rgb(56, 151, 240);
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.login-page button:hover {
+  cursor: pointer;
+  background: rgba(56, 151, 240, 0.856);
+  border-color: rgba(56, 151, 240, 0.856);
+  transition: 0.3s;
+}
+
+.login-page button:focus {
+  outline: none;
+  transform: translate(2px, 2px);
+  transition: 0.1s;
+}

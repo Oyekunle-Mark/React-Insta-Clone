@@ -1,4 +1,5 @@
 import React from "react";
+import "./LoginPage.css";
 
 export default function LoginPage() {
   const login = e => {
@@ -10,9 +11,12 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={login}>
-      <input className="usernameInput" type="text" placeholder="username" />
-      <input type="text" placeholder="password" />
+    <form className="login-page" onSubmit={login}>
+      <h2>Instagram</h2>
+      <hr />
+
+      <input className="usernameInput" type="text" placeholder="Username" />
+      <input type="text" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
   );
