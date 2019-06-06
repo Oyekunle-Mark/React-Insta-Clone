@@ -1,7 +1,61 @@
 import React from "react";
 import Props from "prop-types";
+import styled from "styled-components";
 import CommentSection from "../CommentSection/CommentSection";
-import "./PostConatainer.css";
+import StyledUsername from "../Styles/StyledUsername";
+
+const StyledPostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 614px;
+  border: 1px solid rgb(211, 209, 209);
+  margin-bottom: 60px;
+  border-radius: 3px;
+  background: white;
+
+  .post-header {
+    height: 22px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .icons {
+    padding: 0 5px;
+  }
+
+  .icons img {
+    width: 26px;
+    height: 26px;
+    margin: 5px;
+  }
+
+  .icons img:hover {
+    cursor: pointer;
+  }
+
+  .icons img:active {
+    transform: scale(1.2);
+  }
+
+  p {
+    margin: 7px 0;
+    padding-left: 10px;
+  }
+
+  .likes {
+    font-weight: 550;
+    color: rgb(92, 83, 83);
+  }
+`;
+
+const StyledThumbnail = styled.div`
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+`;
 
 export default function PostContainer({
   id,
@@ -14,10 +68,12 @@ export default function PostContainer({
   likeHandler
 }) {
   return (
-    <div className="post-container">
+    <StyledPostContainer>
       <div className="post-header">
-        <img src={thumbnailUrl} alt="user-icon" />
-        <span>{username}</span>
+        <StyledThumbnail>
+          <img src={thumbnailUrl} alt="user-icon" />
+        </StyledThumbnail>
+        <StyledUsername>{username}</StyledUsername>
       </div>
 
       <img src={imageUrl} alt="post-imgae" />
@@ -37,7 +93,7 @@ export default function PostContainer({
       <p className="likes">{likes} likes</p>
 
       <CommentSection time={timestamp} postComments={comments} id={id} />
-    </div>
+    </StyledPostContainer>
   );
 }
 
