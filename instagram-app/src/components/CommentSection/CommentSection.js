@@ -2,8 +2,35 @@ import React, { useState } from "react";
 import Props from "prop-types";
 import { v4 } from "uuid";
 import moment from "moment";
+import styled from "styled-components";
 import Comment from "../Comment/Comment";
-import "./CommentSection.css";
+
+const StyledCommentSection = styled.div`
+  input {
+    display: block;
+    width: 96%;
+    height: 60px;
+    margin: auto;
+    border-top: 1px solid rgb(211, 209, 209);
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  input:focus {
+    outline: none;
+    border-top: 2px solid rgb(90, 87, 87);
+  }
+
+  .time {
+    padding-left: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgb(92, 83, 83);
+  }
+`;
 
 export default function CommentSection({ time, postComments }) {
   const [comment, updateComment] = useState("");
@@ -46,7 +73,7 @@ export default function CommentSection({ time, postComments }) {
   const newDate = time.replace(/th/, "");
 
   return (
-    <div className="comment-section">
+    <StyledCommentSection>
       {comments}
 
       <span className="time">{moment(new Date(newDate)).format("MMM D")}</span>
@@ -59,7 +86,7 @@ export default function CommentSection({ time, postComments }) {
           onChange={commentInputHandler}
         />
       </form>
-    </div>
+    </StyledCommentSection>
   );
 }
 
