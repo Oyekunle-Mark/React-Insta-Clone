@@ -25,8 +25,8 @@ const StyledPostContainer = styled.div`
   }
 
   .icons img {
-    width: 26px;
-    height: 26px;
+    width: 15px;
+    height: 15px;
     margin: 5px;
   }
 
@@ -35,7 +35,11 @@ const StyledPostContainer = styled.div`
   }
 
   .icons img:active {
-    transform: scale(1.2);
+    transform: scale(1.3);
+  }
+
+  .icons img:nth-of-type(2) {
+    transform: rotateY(180deg);
   }
 
   p {
@@ -66,8 +70,13 @@ export default function PostContainer({
   likes,
   timestamp,
   comments,
-  likeHandler
+  likeHandler,
+  liked
 }) {
+  const imageSource = liked
+    ? "https://image.flaticon.com/icons/svg/148/148836.svg"
+    : "https://image.flaticon.com/icons/svg/149/149217.svg";
+
   return (
     <StyledPostContainer>
       <div className="post-header">
@@ -81,7 +90,7 @@ export default function PostContainer({
 
       <div className="icons">
         <img
-          src="https://img.icons8.com/ios/50/000000/hearts.png"
+          src={imageSource}
           alt="like"
           onClick={() => likeHandler(id)}
         />
@@ -106,5 +115,6 @@ PostContainer.propTypes = {
   likes: Props.number.isRequired,
   timestamp: Props.string.isRequired,
   comments: Props.arrayOf(Props.object).isRequired,
-  likeHandler: Props.func.isRequired
+  likeHandler: Props.func.isRequired,
+  liked: Props.bool.isRequired
 };

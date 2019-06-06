@@ -36,7 +36,15 @@ export default class PostsPage extends Component {
     const newPosts = [...this.state.posts];
 
     newPosts.forEach(post => {
-      if (post.id === id) post.likes += 1;
+      if (post.id === id) {
+        if (!post.liked) {
+          post.likes += 1;
+          post.liked = !post.liked;
+        } else {
+          post.likes -= 1;
+          post.liked = !post.liked;
+        }
+      }
     });
 
     this.setState({
