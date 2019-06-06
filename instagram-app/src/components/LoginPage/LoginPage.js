@@ -2,12 +2,10 @@ import React from "react";
 import "./LoginPage.css";
 
 export default function LoginPage() {
-  const login = e => {
-    e.preventDefault();
+  const login = () => {
     const username = document.querySelector(".usernameInput").value;
 
     localStorage.instagramCloneUsername = username;
-    window.location.reload();
   };
 
   return (
@@ -16,7 +14,7 @@ export default function LoginPage() {
       <hr />
 
       <input className="usernameInput" type="text" placeholder="Username" />
-      <input type="text" placeholder="Password" />
+      <input type="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
   );

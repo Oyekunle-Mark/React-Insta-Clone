@@ -27,7 +27,7 @@ const withAuthenticate = PostsPage => LoginPage =>
     render() {
       const { loggedIn } = this.state;
 
-      return loggedIn ? <PostsPage {...this.props} /> : <LoginPage />;
+      return loggedIn ? <PostsPage /> : <LoginPage />;
     }
   };
 

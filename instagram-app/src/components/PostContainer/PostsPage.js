@@ -1,43 +1,90 @@
-import React from "react";
-import Props from "prop-types";
+import React, { Component } from "react";
 import Fuse from "fuse.js";
+import data from "../../dummy-data";
 import SeachBar from "../SearchBar/SearchBar";
 import PostContainer from "./PostContainer";
 
-export default function PostsPage({
-  posts,
-  searchInput,
-  searchInputChange,
-  likeComment
-}) {
-  const options = {
-    keys: ["username"]
+export default class PostsPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      posts: [],
+      searchInput: ""
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", () => {
+      this.updateLocalStorage();
+    });
+
+    let initialPosts;
+
+    try {
+      initialPosts = JSON.parse(localStorage.instagramClone);
+    } catch (e) {
+      initialPosts = data;
+    }
+
+    this.setState({
+      posts: initialPosts
+    });
+  }
+
+  likeComment = id => {
+    const newPosts = [...this.state.posts];
+
+    newPosts.forEach(post => {
+      if (post.id === id) post.likes += 1;
+    });
+
+    this.setState({
+      posts: newPosts
+    });
   };
 
-  // eslint-disable-next-line
-  const postContainers = posts.map(post => {
-    if (
-      !!new Fuse([post], options).search(searchInput).length ||
-      searchInput.trim() === ""
-    ) {
-      return (
-        <PostContainer key={post.id} {...post} likeHandler={likeComment} />
-      );
-    }
-  });
+  searchInputChange = e => {
+    this.setState({
+      searchInput: e.target.value
+    });
+  };
 
-  return (
-    <>
-      <SeachBar searchValue={searchInput} inputChange={searchInputChange} />
+  updateLocalStorage = () => {
+    localStorage.instagramClone = JSON.stringify(this.state.posts);
+  };
 
-      {postContainers}
-    </>
-  );
+  render() {
+    const { posts, searchInput } = this.state;
+    const options = {
+      keys: ["username"]
+    };
+
+    // eslint-disable-next-line
+    const postContainers = posts.map(post => {
+      if (
+        !!new Fuse([post], options).search(searchInput).length ||
+        searchInput.trim() === ""
+      ) {
+        return (
+          <PostContainer
+            key={post.id}
+            {...post}
+            likeHandler={this.likeComment}
+          />
+        );
+      }
+    });
+
+    return (
+      <>
+        <SeachBar
+          searchValue={searchInput}
+          inputChange={this.searchInputChange}
+        />
+
+        {postContainers}
+      </>
+    );
+  }
 }
-
-PostsPage.propTypes = {
-  posts: Props.arrayOf(Props.object).isRequired,
-  searchInput: Props.string.isRequired,
-  searchInputChange: Props.func.isRequired,
-  likeComment: Props.func.isRequired
-};
