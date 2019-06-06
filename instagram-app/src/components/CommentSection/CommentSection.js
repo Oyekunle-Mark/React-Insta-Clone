@@ -27,7 +27,7 @@ const StyledCommentSection = styled.div`
   .time {
     padding-left: 10px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 10px;
     color: rgb(92, 83, 83);
   }
 `;

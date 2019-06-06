@@ -63,4 +63,5 @@
   outline: none;
   transform: translate(2px, 2px);
   transition: 0.1s;
+  color: rgb(37, 35, 35);
 }

@@ -40,6 +40,7 @@ module.exports = {
     "consistent-return": 0,
     "no-extra-boolean-cast": 0,
     "operator-linebreak": 0,
-    "react/prefer-stateless-function": 0
+    "react/prefer-stateless-function": 0,
+    "no-confusing-arrow": 0
   }
 };

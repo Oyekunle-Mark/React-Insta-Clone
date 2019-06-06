@@ -1,8 +1,12 @@
 import React from "react";
 import Props from "prop-types";
 import styled from "styled-components";
+import StyledUsername from "../Styles/StyledUsername";
 
 const StyledComment = styled.p`
+  font-size: 14px;
+  color: rgb(37, 35, 35);
+
   .delete-icon {
     float: right;
     margin-right: 10px;
@@ -29,7 +33,7 @@ export default function Comment({
 }) {
   return (
     <StyledComment>
-      <span className="likes">{username}</span> {text}
+      <StyledUsername comment>{username}</StyledUsername> {text}
       <img
         src="https://img.icons8.com/pastel-glyph/64/000000/cancel.png"
         alt="delete"

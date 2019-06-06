@@ -44,8 +44,9 @@ const StyledPostContainer = styled.div`
   }
 
   .likes {
-    font-weight: 550;
-    color: rgb(92, 83, 83);
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(37, 35, 35);
   }
 `;
 
