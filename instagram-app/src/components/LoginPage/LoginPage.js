@@ -1,11 +1,11 @@
-import React from "react";
+import React, { createRef } from "react";
 import "./LoginPage.css";
 
 export default function LoginPage() {
-  const login = () => {
-    const username = document.querySelector(".usernameInput").value;
+  const textInput = createRef();
 
-    localStorage.instagramCloneUsername = username;
+  const login = () => {
+    localStorage.instagramCloneUsername = textInput.current.value;
   };
 
   return (
@@ -13,7 +13,7 @@ export default function LoginPage() {
       <h2>Instagram</h2>
       <hr />
 
-      <input className="usernameInput" type="text" placeholder="Username" />
+      <input type="text" placeholder="Username" ref={textInput} />
       <input type="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
