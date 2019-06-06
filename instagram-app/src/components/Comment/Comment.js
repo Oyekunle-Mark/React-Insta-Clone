@@ -1,6 +1,6 @@
 import React from "react";
 import Props from "prop-types";
-import './Comment.css';
+import "./Comment.css";
 
 export default function Comment({
   id,
@@ -11,10 +11,13 @@ export default function Comment({
 }) {
   return (
     <p className="comment">
-      <span className="likes">{username}</span> {text}{" "}
-      <span className="delete-icon" onClick={() => removeComment(id, position)}>
-        X
-      </span>
+      <span className="likes">{username}</span> {text}
+      <img
+        src="https://img.icons8.com/pastel-glyph/64/000000/cancel.png"
+        alt="delete"
+        className="delete-icon"
+        onClick={() => removeComment(id, position)}
+      />
     </p>
   );
 }

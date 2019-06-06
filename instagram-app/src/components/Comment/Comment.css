@@ -2,8 +2,14 @@
   float: right;
   margin-right: 10px;
   color: rgb(211, 209, 209);
+  height: 16px;
+  width: 16px;
+  opacity: 0.1;
 }
 
 .delete-icon:hover {
   cursor: pointer;
+  opacity: 1;
+  transition: 0.3s;
+  transform: scale(1.4);
 }
